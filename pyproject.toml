@@ -32,7 +32,7 @@ your_package = ["py.typed"]
 
 [tool.tox]
 requires = ["tox>=4.19"]
-env_list = ["3.14t", "3.14", "type"]
+env_list = ["3.14t", "3.14", "type", "lint_checks"]
 
 [tool.tox.env_run_base]
 description = "Run test under {base_python}"
@@ -44,4 +44,16 @@ dependency_groups = [
 [tool.tox.env.type]
 description = "run type check on code base"
 commands = [["mypy", "src", "tests"]]
+dependency_groups = ["dev"]
+
+
+[tool.tox.env.lint_checks]
+description = "run linter checks on code base"
+commands = [["ruff", "check", "--no-fix"], ["ruff", "format", "--check"]]
+dependency_groups = ["dev"]
+
+
+[tool.tox.env.lint]
+description = "run linter checks on code base"
+commands = [["ruff", "format"]]
 dependency_groups = ["dev"]
