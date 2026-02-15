@@ -6,9 +6,9 @@ from python_stuff.playing_cards.cards import Card
 
 class TestCard(TestCase):
     def test_init(self) -> None:
-        card = Card("2", "suite")
+        card = Card(2, "suite")
 
-        self.assertEqual(card.value, "2")
+        self.assertEqual(card.value, 2)
         self.assertEqual(card.suite, "suite")
 
 
