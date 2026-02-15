@@ -1,5 +1,3 @@
-from typing import ClassVar
-
 class Card:
     def __init__(self, value: int, suite: str) -> None:
         self._value = value
