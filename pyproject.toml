@@ -1,0 +1,47 @@
+[project]
+name = "python-stuff"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Marcus Willock",email = "crazcalm@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "python_stuff", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "mypy (>=1.19.1,<2.0.0)",
+    "ruff (>=0.15.1,<0.16.0)",
+    "tox (>=4.35.0,<5.0.0)"
+]
+
+[mypy]
+mypy_path = ["src"]
+
+[tool.setuptools.package-data]
+your_package = ["py.typed"]
+
+[tool.tox]
+requires = ["tox>=4.19"]
+env_list = ["3.14t", "3.14", "type"]
+
+[tool.tox.env_run_base]
+description = "Run test under {base_python}"
+commands = [["python", "-m", "unittest", "discover", "-v", "tests/"]]
+dependency_groups = [
+  "dev",
+]
+
+[tool.tox.env.type]
+description = "run type check on code base"
+commands = [["mypy", "src", "tests"]]
+dependency_groups = ["dev"]
