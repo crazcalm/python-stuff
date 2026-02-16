@@ -91,10 +91,6 @@ class Card:
 
 
 def create_cards(exclude: list[Card] | None = None) -> list[Card]:
-    results = []
-
-    joker_names = CardValue
-
     results = [
         Card(value, suite)
         for value in CardValue.values_no_jokers()
