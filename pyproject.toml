@@ -36,7 +36,7 @@ env_list = ["3.14t", "3.14", "type", "lint_checks"]
 
 [tool.tox.env_run_base]
 description = "Run test under {base_python}"
-commands = [["python", "-m", "unittest", "discover", "-v", "tests/"]]
+commands = [["python", "-m", "unittest", "discover",  "--start-directory", "tests/", "--top-level-directory", " .", "-v"]]
 dependency_groups = [
   "dev",
 ]
